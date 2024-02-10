@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+    const navigate=useNavigate()
 
     const [input,setInput]=new useState([
         {
@@ -18,6 +20,7 @@ const Login = () => {
         axios.post("http://localhost:3001/api/user/login",input).then((responce)=>{
             if(responce.data.status == "success"){
                 alert("Login Success")
+                navigate("/addcomment")
                 setInput(
                     {
                         email:"",
