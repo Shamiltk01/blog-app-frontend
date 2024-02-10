@@ -6,7 +6,7 @@ const Login = () => {
     const [input,setInput]=new useState([
         {
             email:"",
-            pass:""
+            password:""
         }
     ])
 
@@ -15,18 +15,18 @@ const Login = () => {
     }
 
     const read=()=>{
-        axios.post("http://localhost:3001/user/signup",input).then((responce)=>{
+        axios.post("http://localhost:3001/api/user/login",input).then((responce)=>{
             if(responce.data.status == "success"){
                 alert("Login Success")
                 setInput(
                     {
                         email:"",
-                        pass:""
+                        password:""
                     }
                 )
             }
             else{
-                alert("somthing went wrong..!")
+                alert("Wrong credentials..!")
             }
             
         })
@@ -48,16 +48,16 @@ const Login = () => {
 
                                         <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                                             <label htmlFor="" className="form-label">Email address</label>
-                                            <input type="email" className="form-control" name='email'  />
+                                            <input type="email" className="form-control" name='email' value={input.email} onChange={handler} />
                                         </div>
 
                                         <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                                             <label htmlFor="" className="form-label">Password</label>
-                                            <input type="password" name="pass"  className="form-control" />
+                                            <input type="password" name="password" value={input.password} className="form-control" onChange={handler}/>
                                         </div>
                                         <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                                            <button className="btn btn-info">Login</button>  &nbsp;&nbsp;
-                                            <a href="/register" className="card-link">SignUp</a>
+                                            <button className="btn btn-info" onClick={read}>Login</button>  &nbsp;&nbsp;
+                                            <a href="/register" className="card-link" >SignUp</a>
                                         </div>
                                     </div>
 
