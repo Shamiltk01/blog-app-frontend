@@ -18,7 +18,9 @@ const Login = () => {
 
     const read=()=>{
         axios.post("http://localhost:3001/api/user/login",input).then((responce)=>{
+            console.log(responce.data.userId)
             if(responce.data.status == "success"){
+                sessionStorage.setItem("userId",responce.data.userId)
                 alert("Login Success")
                 navigate("/addcomment")
                 setInput(
