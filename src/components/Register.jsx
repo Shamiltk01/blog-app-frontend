@@ -9,7 +9,7 @@ const Register = () => {
             email:"",
             age:"",
             phone:"",
-            pass:""
+            password:""
         }
     ])
 
@@ -18,7 +18,7 @@ const Register = () => {
     }
 
     const read=()=>{
-        axios.post("http://localhost:3001/user/signup",input).then((responce)=>{
+        axios.post("http://localhost:3001/api/user/register",input).then((responce)=>{
             if(responce.data.status == "success"){
                 alert("Successfully registered")
                 setInput(
@@ -27,7 +27,7 @@ const Register = () => {
                         email:"",
                         age:"",
                         phone:"",
-                        pass:""
+                        password:""
                     }
                 )
             }
@@ -49,26 +49,26 @@ const Register = () => {
                             </div>
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                 <label htmlFor="" className="form-label">Name</label>
-                                <input type="text" className="form-control" name='name' onChange={handler} />
+                                <input type="text" className="form-control" name='name' value={input.name} onChange={handler} />
                             </div>
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                 <label htmlFor="" className="form-label">Email address</label>
-                                <input type="email" className="form-control" name='email' onChange={handler}/>
+                                <input type="email" className="form-control" name='email' value={input.email} onChange={handler}/>
                             </div>
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                 <label htmlFor="" className="form-label">Age</label>
-                                <input type="number" name="age"  className="form-control" onChange={handler} />
+                                <input type="number" name="age" value={input.age} className="form-control" onChange={handler} />
                             </div>
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                 <label htmlFor="" className="form-label">Phone Number</label>
-                                <input type="number" name="phone" className="form-control" onChange={handler}/>
+                                <input type="number" name="phone" value={input.phone} className="form-control" onChange={handler}/>
                             </div>
                             <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                                 <label htmlFor="" className="form-label">Password</label>
-                                <input type="password" name="pass" onChange={handler} className="form-control" />
+                                <input type="password" name="password" value={input.password} onChange={handler} className="form-control" />
                             </div>
                             <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                                <button className="btn btn-info">Register</button>  &nbsp;&nbsp;
+                                <button className="btn btn-info" onClick={read}>Register</button>  &nbsp;&nbsp;
                                 <a href="/" className="card-link">Back to Login</a>
                             </div>
                         </div>
